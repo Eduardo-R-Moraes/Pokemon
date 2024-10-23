@@ -7,10 +7,15 @@ import { Observable } from "rxjs";
 })
 export class PokeApiService {
     private apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
+    private apiUrlImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
     constructor(private http: HttpClient) {}
 
     getPokemon(): Observable<any> {
         return this.http.get<any>(this.apiUrl)
     }
+
+  getPokemonImageUrl(id: number): string {
+    return `${this.apiUrlImage}/${id}.png`;
+  }
 }
